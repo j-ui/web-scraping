@@ -7,8 +7,7 @@ What it does:
     - HTTP status, final URL, Last-Modified, Content-Type, Server
     - <title>, meta description, meta keywords, robots, canonical URL
     - Open Graph (og:title, og:description, og:image)
-    - Twitter (twitter:title, twitter:description, twitter:image)
-    - H1 headings, link counts (internal/external/total), word count
+    - H1 headings, link counts (internal/external/total), word counts
     - All meta tags as a JSON string
 - Automatically saves output as 'output_webscraping.xlsx'
   in the same folder as the input file.
@@ -130,9 +129,6 @@ def scrape_url(url: str) -> Dict[str, object]:
         "og_title": None,
         "og_description": None,
         "og_image": None,
-        "twitter_title": None,
-        "twitter_description": None,
-        "twitter_image": None,
         "last_modified": None,
         "content_type": None,
         "server": None,
@@ -211,10 +207,6 @@ def scrape_url(url: str) -> Dict[str, object]:
     result["og_description"] = extract_meta(soup, prop="og:description")
     result["og_image"] = extract_meta(soup, prop="og:image")
 
-    # Twitter
-    result["twitter_title"] = extract_meta(soup, name="twitter:title")
-    result["twitter_description"] = extract_meta(soup, name="twitter:description")
-    result["twitter_image"] = extract_meta(soup, name="twitter:image")
 
     # H1 headings
     h1_items: List[str] = []
